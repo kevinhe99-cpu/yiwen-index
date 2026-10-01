@@ -25,8 +25,12 @@
   .count { display: inline-block; margin-top: 20px; font-size: 13px; color: var(--gold);
     border: 1px solid rgba(201,169,110,.4); border-radius: 20px; padding: 5px 18px; }
 
-  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
-    justify-content: space-between; margin: 30px 0 8px; }
+  .toolbar-bar { position: sticky; top: 0; z-index: 20;
+    background: rgba(250,248,245,.96); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border); }
+  .toolbar { max-width: 880px; margin: 0 auto; padding: 14px 22px;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    justify-content: space-between; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { font-size: 14px; padding: 6px 16px; border-radius: 18px; border: 1px solid var(--border);
     background: var(--card); color: var(--dark); cursor: pointer; transition: all .2s; }
@@ -36,7 +40,7 @@
     background: var(--card); width: 180px; outline: none; font-family: inherit; }
   #search:focus { border-color: var(--accent); }
 
-  .list { margin-top: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .list { display: flex; flex-direction: column; gap: 14px; }
   a.card { display: block; background: var(--card); border: 1px solid var(--border);
     border-radius: 14px; padding: 22px 56px 22px 24px; text-decoration: none; color: inherit;
     transition: transform .18s, box-shadow .18s; position: relative; overflow: hidden; }
@@ -69,6 +73,7 @@
     .arrow { display: none; }
     a.card { padding-right: 24px; }
     .title { font-size: 17px; }
+    .toolbar { padding: 10px 16px; }
     #search { width: 100%; }
   }
 </style>
@@ -82,11 +87,14 @@
   <div class="count" id="count"></div>
 </header>
 
-<div class="wrap">
+<div class="toolbar-bar">
   <div class="toolbar">
     <div class="chips" id="chips"></div>
     <input id="search" type="text" placeholder="搜索标题或摘要…">
   </div>
+</div>
+
+<div class="wrap">
   <div class="list" id="list"></div>
   <footer>@以文说艺</footer>
 </div>
